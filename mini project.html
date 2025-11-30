@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>College Admission Management System</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f6fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .title {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 28px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 380px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+
+        h3 {
+            text-align: center;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #aaa;
+        }
+
+        .btn {
+            width: 100%;
+            background: #244bcc;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #183a9f;
+        }
+
+        .output {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #555;
+            text-align: center;
+        }
+
+        th {
+            background: #244bcc;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h2 class="title">College Admission Management System</h2>
+
+    <div class="container">
+        <form id="admissionForm">
+            <h3>Student Admission Form</h3>
+
+            <label>Full Name</label>
+            <input type="text" id="name" required>
+
+            <label>Email</label>
+            <input type="email" id="email" required>
+
+            <label>Phone Number</label>
+            <input type="text" id="phone" required>
+
+            <label>Course Applying For</label>
+            <select id="course" required>
+                <option value="">-- Select Course --</option>
+                <option>BCA</option>
+                <option>BBA</option>
+                <option>BSc CS</option>
+                <option>BA English</option>
+                <option>BCom</option>
+            </select>
+
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+
+    <div class="output">
+        <h3>Submitted Applications</h3>
+        <table id="outputTable">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Course</th>
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        document.getElementById("admissionForm").addEventListener("submit", function(e){
+            e.preventDefault();
+
+            let name = document.getElementById("name").value;
+            let email = document.getElementById("email").value;
+            let phone = document.getElementById("phone").value;
+            let course = document.getElementById("course").value;
+
+            if(name === "" || email === "" || phone === "" || course === "") {
+                alert("Please fill all fields!");
+                return;
+            }
+
+            let table = document.getElementById("outputTable");
+            let newRow = table.insertRow(-1);
+
+            newRow.insertCell(0).innerHTML = name;
+            newRow.insertCell(1).innerHTML = email;
+            newRow.insertCell(2).innerHTML = phone;
+            newRow.insertCell(3).innerHTML = course;
+
+            document.getElementById("admissionForm").reset();
+        });
+    </script>
+
+</body>
+</html>
